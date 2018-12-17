@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Calc.cs" />
     <Compile Include="DeserializedData.cs" />
+    <Compile Include="Parser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

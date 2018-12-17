@@ -16,7 +16,9 @@ namespace JsonCalc
             var startDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
             DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(DeserializedData));
 
-            Calc calcNew = new Calc();
+            
+            
+
             DeserializedData dd = new DeserializedData();
 
             using (FileStream fs = new FileStream(startDir + "\\input.json", FileMode.OpenOrCreate))
@@ -24,7 +26,8 @@ namespace JsonCalc
                 dd = (DeserializedData)jsonFormatter.ReadObject(fs);
             }
 
-            calcNew.Parser(dd.Numbers,dd.Operations);
+            var calcNew = new Calc(new ParsedData(dd.Numbers, dd.Operations));
+            // calcNew.Parser();
             calcNew.Operations();
             
         }

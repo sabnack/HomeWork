@@ -11,44 +11,42 @@ namespace JsonCalc
     {
         delegate double DOperations(double x, double y);
         private DOperations Dop;
-        private List<double> _numbers;
-        private List<string> _operations;
+        private ParsedData Data;
 
-        public Calc()//string numbers, string operations)
+        public Calc(ParsedData data)//string numbers, string operations)
         {
-            _numbers = new List<double>();
-            _operations = new List<string>();
+            Data = data;
         }
 
-        public void Parser(string numbers, string operations)
-        {
-            foreach (var item in Parse(numbers))
-            {
-                if (int.TryParse(item, out int tmp))
-                {
-                    _numbers.Add(tmp);
-                }
-            }
+        //public void Parser(string numbers, string operations)
+        //{
+        //    foreach (var item in Parse(numbers))
+        //    {
+        //        if (int.TryParse(item, out int tmp))
+        //        {
+        //            _numbers.Add(tmp);
+        //        }
+        //    }
 
-            foreach (var item in Parse(operations))
-            {
-                if (item == "/" || item == "*" || item == "+" || item == "-")
-                {
-                    _operations.Add(item);
-                }
-            }
-        }
+        //    foreach (var item in Parse(operations))
+        //    {
+        //        if (item == "/" || item == "*" || item == "+" || item == "-")
+        //        {
+        //            _operations.Add(item);
+        //        }
+        //    }
+        //}
 
-        private string[] Parse(string str)
-        {
-            return str.Split(new char[] { ',' });
-        }
+        //private string[] Parse(string str)
+        //{
+        //    return str.Split(new char[] { ',' });
+        //}
 
         public void Operations()
         {
             var tmpStr = new StringBuilder();
             double tmp = 0;
-            foreach (var item in _operations)
+            foreach (var item in Data.Operations)
             {
                 switch (item)
                 {
@@ -66,18 +64,18 @@ namespace JsonCalc
                         break;
                 }
 
-                tmp = _numbers[0];
-                tmpStr.Append(_numbers[0].ToString());
+                tmp = Data.Numbers[0];
+                tmpStr.Append(Data.Numbers[0].ToString());
 
-                for (var i = 1; i < _numbers.Count; i++)
+                for (var i = 1; i < Data.Numbers.Count; i++)
                 {
-                    tmp = Dop(tmp, _numbers[i]);
+                    tmp = Dop(tmp, Data.Numbers[i]);
                     tmpStr.Append(item.ToString());
-                    tmpStr.Append(_numbers[i].ToString());
+                    tmpStr.Append(Data.Numbers[i].ToString());
                 }
 
-                Console.WriteLine("{0} = {1}",tmpStr,tmp);
-                tmp = _numbers[0];
+                Console.WriteLine("{0} = {1}", tmpStr, tmp);
+                tmp = Data.Numbers[0];
                 tmpStr.Clear();
             }
         }
