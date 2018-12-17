@@ -13,34 +13,10 @@ namespace JsonCalc
         private DOperations Dop;
         private ParsedData Data;
 
-        public Calc(ParsedData data)//string numbers, string operations)
+        public Calc(ParsedData data)
         {
             Data = data;
         }
-
-        //public void Parser(string numbers, string operations)
-        //{
-        //    foreach (var item in Parse(numbers))
-        //    {
-        //        if (int.TryParse(item, out int tmp))
-        //        {
-        //            _numbers.Add(tmp);
-        //        }
-        //    }
-
-        //    foreach (var item in Parse(operations))
-        //    {
-        //        if (item == "/" || item == "*" || item == "+" || item == "-")
-        //        {
-        //            _operations.Add(item);
-        //        }
-        //    }
-        //}
-
-        //private string[] Parse(string str)
-        //{
-        //    return str.Split(new char[] { ',' });
-        //}
 
         public void Operations()
         {
