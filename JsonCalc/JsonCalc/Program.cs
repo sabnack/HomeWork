@@ -23,7 +23,7 @@ namespace JsonCalc
             }
 
             var calcNew = new Calc(dd.Numbers, dd.Operations);
-            calcNew.Operationss();
+            calcNew.Start();
             
         }
     }

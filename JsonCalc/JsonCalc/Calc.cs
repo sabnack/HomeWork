@@ -9,7 +9,7 @@ namespace JsonCalc
 
     class Calc:ParsedData
     {
-        delegate double DOperations(double x, double y);
+        private delegate double DOperations(double x, double y);
         private DOperations Dop;
     //    private ParsedData Data;
 
@@ -18,7 +18,7 @@ namespace JsonCalc
         {
         }
 
-        public void Operationss()
+        public void Start()
         {
             var tmpStr = new StringBuilder();
             double tmp = 0;
