@@ -46,7 +46,7 @@ namespace JsonCalc
 
         public void Operations()
         {
-            string tmpStr = null;
+            var tmpStr = new StringBuilder();
             double tmp = 0;
             foreach (var item in _operations)
             {
@@ -67,19 +67,18 @@ namespace JsonCalc
                 }
 
                 tmp = _numbers[0];
-                tmpStr += _numbers[0];
+                tmpStr.Append(_numbers[0].ToString());
 
                 for (var i = 1; i < _numbers.Count; i++)
                 {
                     tmp = Dop(tmp, _numbers[i]);
-                    tmpStr += item;
-                    tmpStr += _numbers[i];
-                    
+                    tmpStr.Append(item.ToString());
+                    tmpStr.Append(_numbers[i].ToString());
                 }
 
                 Console.WriteLine("{0} = {1}",tmpStr,tmp);
                 tmp = _numbers[0];
-                tmpStr = null;
+                tmpStr.Clear();
             }
         }
 
