@@ -9,7 +9,7 @@ namespace JsonCalc
 
     class Calc
     {
-        public delegate double DOperations(double x, double y);
+        delegate double DOperations(double x, double y);
         private DOperations Dop;
         private List<double> _numbers;
         private List<string> _operations;
