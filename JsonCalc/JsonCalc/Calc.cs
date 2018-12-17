@@ -7,22 +7,22 @@ using System.Threading.Tasks;
 namespace JsonCalc
 {
 
-    class Calc
+    class Calc:ParsedData
     {
         delegate double DOperations(double x, double y);
         private DOperations Dop;
-        private ParsedData Data;
+    //    private ParsedData Data;
 
-        public Calc(ParsedData data)
+        public Calc(string numbers, string operations)
+            :base (numbers, operations)
         {
-            Data = data;
         }
 
-        public void Operations()
+        public void Operationss()
         {
             var tmpStr = new StringBuilder();
             double tmp = 0;
-            foreach (var item in Data.Operations)
+            foreach (var item in Operations)
             {
                 switch (item)
                 {
@@ -40,18 +40,18 @@ namespace JsonCalc
                         break;
                 }
 
-                tmp = Data.Numbers[0];
-                tmpStr.Append(Data.Numbers[0].ToString());
+                tmp = Numbers[0];
+                tmpStr.Append(Numbers[0].ToString());
 
-                for (var i = 1; i < Data.Numbers.Count; i++)
+                for (var i = 1; i < Numbers.Count; i++)
                 {
-                    tmp = Dop(tmp, Data.Numbers[i]);
+                    tmp = Dop(tmp, Numbers[i]);
                     tmpStr.Append(item.ToString());
-                    tmpStr.Append(Data.Numbers[i].ToString());
+                    tmpStr.Append(Numbers[i].ToString());
                 }
 
                 Console.WriteLine("{0} = {1}", tmpStr, tmp);
-                tmp = Data.Numbers[0];
+                tmp = Numbers[0];
                 tmpStr.Clear();
             }
         }

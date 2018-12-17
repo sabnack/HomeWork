@@ -26,9 +26,9 @@ namespace JsonCalc
                 dd = (DeserializedData)jsonFormatter.ReadObject(fs);
             }
 
-            var calcNew = new Calc(new ParsedData(dd.Numbers, dd.Operations));
+            var calcNew = new Calc(dd.Numbers, dd.Operations);
             // calcNew.Parser();
-            calcNew.Operations();
+            calcNew.Operationss();
             
         }
     }

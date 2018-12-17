@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace JsonCalc
 {
-    class ParsedData
+    abstract class ParsedData
     {
-        public List<double> Numbers { get; set; }
-        public List<string> Operations { get; set; }
+        protected List<double> Numbers { get; set; }
+        protected List<string> Operations { get; set; }
 
         public ParsedData(string numbers, string operations)
         {
